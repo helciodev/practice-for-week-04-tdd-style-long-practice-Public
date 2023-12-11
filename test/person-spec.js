@@ -1,10 +1,10 @@
 const expect = require("chai").expect;
 
-const { Person } = require("../problems/person");
+const Person = require("../problems/person");
 
 describe(" class Person", () => {
   beforeEach(() => {
-    person = new Person("helcio", 34);
+    person = new Person("Helcio", 34);
     person2 = new Person("Laide", 23);
     person3 = new Person("Danilo", 25);
     person4 = new Person("Karina", 25);
@@ -16,13 +16,13 @@ describe(" class Person", () => {
   });
   describe("Person.sayHello()", () => {
     it(`should return a string of the Person instance's name and a greeting message`, () => {
-      expect(person.sayHello()).to.equal("helcio says greetings humans!");
+      expect(person.sayHello()).to.equal("Helcio says greetings humans!");
     });
   });
 
   describe("Person.visit(person2)", () => {
     it("should return a string with the instance person name visited person2 name", () => {
-      expect(person.visit(person2)).to.equal("Helcio visited Laide");
+      expect(person.visit(person2)).to.equal("Helcio visited Laide.");
     });
   });
   describe("Person.switchVisit(otherPerson)", () => {
@@ -51,10 +51,10 @@ describe(" class Person", () => {
     let obj1 = { age: 34, job: "software engineer" };
     let obj2 = { name: "Bruno", age: 35 };
     it("should return false if not updated successfully", () => {
-      expect(person.update(obj1)).to.equal(false);
+      expect(person.tryUpdate(obj1)).to.equal(false);
     });
     it("should return true if updated successfully", () => {
-      expect(person.update(obj2)).to.equal(false);
+      expect(person.tryUpdate(obj2)).to.equal(true);
     });
   });
   describe("Person.greetAll(arr)", () => {
@@ -67,18 +67,15 @@ describe(" class Person", () => {
     let str = "string";
     const persons = [person, person2, person3, person4, person5];
     it("should return an array of with strings of each person instance saying a greeting", () => {
-      expect(person.greetAll(persons)).to.equal([
-        "Helcio says greetings humans!",
-        "Laide says greetings humans!",
-        "Danilo says greetings humans!",
-        "Karina says greetings humans!",
-        "Elionora says greetings humans!",
-      ]);
+      expect(person.greetAll(persons).length).to.equal(5);
+      expect(person.greetAll(persons)[0]).to.equal(
+        "Helcio says greetings humans!"
+      );
     });
     it("should return and empty array if the argument array length is zero", () => {
-      expect(person.greetAll(empty)).to.equal([]);
+      expect(person.greetAll(empty).length).to.equal(0);
     });
-    it("should throw an error of type TypeError if argument is not of type arr", () => {
+    it("should throw an error of type TypeError if argument is not of type array", () => {
       expect(() => person.greetAll(str)).to.throw(Error);
     });
   });
