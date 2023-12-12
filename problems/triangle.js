@@ -18,6 +18,10 @@ class Triangle {
       this.isValid = true;
     }
   }
+
+  static getValidTriangles(...args) {
+    return args.filter((triangle) => triangle.hasValidSideLengths());
+  }
 }
 
 module.exports = Triangle;

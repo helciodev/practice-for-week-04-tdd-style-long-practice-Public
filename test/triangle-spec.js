@@ -6,6 +6,7 @@ describe("Triangle class", () => {
   beforeEach(() => {
     triangle1 = new Triangle(4, 5, 4);
     triangle2 = new Triangle(1, 2, 5);
+    triangle3 = new Triangle(5, 4, 2);
   });
   it("should have three sides as keys when initiated", () => {
     expect(triangle1).to.have.keys("side1", "side2", "side3");
@@ -31,6 +32,14 @@ describe("Triangle class", () => {
     it("should add a isValid property  with a value to the triangle instance if it is a valid triangle", () => {
       expect(triangle1.isValid).to.exist;
       expect(triangle2.isValid).to.not.exist;
+    });
+  });
+
+  describe("Triangle.getValidTriangles()", () => {
+    it("should be a static method that when invoked in the parent class with an array of triangles instances returns only the valid triangles instances", () => {
+      expect(
+        Triangle.getValidTriangles(triangle1, triangle2, triangle3)
+      ).to.have.length(2);
     });
   });
 });
