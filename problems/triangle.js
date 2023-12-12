@@ -8,6 +8,16 @@ class Triangle {
   getPerimeter() {
     return this.side1 + this.side2 + this.side3;
   }
+
+  hasValidSideLengths() {
+    return this.side1 + this.side2 > this.side3;
+  }
+
+  validate() {
+    if (this.hasValidSideLengths()) {
+      this.isValid = true;
+    }
+  }
 }
 
 module.exports = Triangle;
